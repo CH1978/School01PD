@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>學生作品展示</title>
+  <!-- 引用外部CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+<header>學生作品展示</header>
+
+<!-- 學期切換按鈕的容器 -->
+<div class="tabs" id="tabContainer"></div>
+
+<!-- 學期作品內容顯示容器 -->
+<div class="semester-container" id="semesterContainer"></div>
+
+<script>
+  // -------------------------
+  // 學期資料，直接寫在 JS 裡面（可自由修改）
+  // -------------------------
+  const data = {
+    "113上學期": [
+
+
+{
+    name: "Panda",
+    avatar: "images/1132/students/001.JPG",
+    intro: "樂觀積極，勇於挑戰新事。",
+    image: "images/1132/students/01_吳奕霆.png"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/002.JPG",
+    intro: "溫和親切，善於與人溝通。",
+    image: "images/1132/students/02 吳鈺棠.png"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/003.JPG",
+    intro: "聰明好學，富有創意想法。",
+    image: "images/1132/students/03 林祐瑋.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/004.JPG",
+    intro: "細心認真，注重每個細節。",
+    image: "images/1132/students/04 陳繹安.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/005.JPG",
+    intro: "開朗活潑，充滿自信熱情。",
+    image: "images/1132/students/05 陳宣叡.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/006.JPG",
+    intro: "穩重踏實，善於解決問題。",
+    image: "images/1132/students/06 陳岳陽.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/007.JPG",
+    intro: "熱情外向，喜歡團隊合作。",
+    image: "images/1132/students/07 洪辰維.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/008.JPG",
+    intro: "冷靜理性，喜歡獨立思考。",
+    image: "images/1132/students/08 李汶樸.jpg",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/009.JPG",
+    intro: "有責任感，態度積極認真。",
+    image: "images/1132/students/09 黃秉昇.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/010.JPG",
+    intro: "謹慎細心，做事有條不紊。",
+    image: "images/1132/students/10 林晉皜.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/011.JPG",
+    intro: "樂於助人，親切友善熱心。",
+    image: "images/1132/students/11楊子立.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/012.JPG",
+    intro: "誠實守信，踏實努力用功。",
+    image: "images/1132/students/12楊子正.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/014.JPG",
+    intro: "想像力豐富，勇於表達自我。",
+    image: "images/1132/students/14 蔡鎮憶.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+},
+{
+    name: "Panda",
+    avatar: "images/1132/students/015.JPG",
+    intro: "積極進取，樂觀開朗正向。",
+    image: "images/1132/students/15 黃樂帆.png",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+}
+
+
+
+
+      // 其他學生省略...
+    ],
+
+
+
+    "113下學期": [
+      {
+        name: "吳小芳",
+        avatar: "https://i.pravatar.cc/100?img=6",
+        intro: "喜歡舞蹈和表演。",
+        image: "https://picsum.photos/id/1033/280/160",
+        video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/tank.webm"
+      },
+      // 其他學生省略...
+    ],
+
+
+
+    /*
+
+    "暑假": [
+      {
+        name: "曾志豪",
+        avatar: "https://i.pravatar.cc/100?img=11",
+        intro: "喜歡戶外活動。",
+        image: "https://picsum.photos/id/1070/280/160",
+        video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/bee.webm"
+      },
+      // 其他學生省略...
+  
+      ]
+      */
+  };
+
+  // 取得按鈕容器和作品容器的元素
+  const tabContainer = document.getElementById("tabContainer");
+  const semesterContainer = document.getElementById("semesterContainer");
+
+  /**
+   * 初始化頁面：
+   * 1. 產生學期切換按鈕
+   * 2. 產生每個學期的學生作品卡片
+   * 3. 預設顯示第一個學期
+   */
+  function init() {
+  // 遍歷所有學期名稱（data 是一個以學期為 key 的物件）
+  Object.keys(data).forEach((semesterName, idx) => {
+    // 建立一個切換學期的按鈕
+    const btn = document.createElement("button");
+    btn.className = "tab-button"; // 設定按鈕的 CSS 類別
+    btn.textContent = semesterName; // 設定按鈕文字為學期名稱
+
+    // 當按鈕被點擊時，顯示對應的學期內容
+    btn.addEventListener("click", () => showSemester(semesterName, btn));
+    tabContainer.appendChild(btn); // 將按鈕加入到按鈕容器中
+
+    // 建立一個對應學期的內容區塊（div），id 設為學期名稱
+    const group = document.createElement("div");
+    group.className = "semester-group"; // 設定區塊的 CSS 類別
+    group.id = semesterName; // 設定該區塊的 id 為學期名稱
+
+    // 對每位學生建立作品卡片
+    data[semesterName].forEach((stu) => {
+      const card = document.createElement("div");
+      card.className = "student-card"; // 設定卡片的 CSS 類別
+
+      // 設定卡片內容，包括頭像、名字、簡介、作品圖片與影片
+      card.innerHTML = `
+        <img class="avatar" src="${stu.avatar}" alt="${stu.name}" loading="lazy" />
+        <h3>${stu.name}</h3>
+        <p>${stu.intro}</p>
+        <div class="work-section">
+          <img src="${stu.image}" alt="作品圖片" loading="lazy" />
+      
+      <!--    <video src="${stu.video}" controls preload="none"></video> -->
+      
+          </div>
+      `;
+
+      // 將卡片加入到對應學期的區塊中
+      group.appendChild(card);
+    });
+
+    // 將整個學期的區塊加入到主要容器中
+    semesterContainer.appendChild(group);
+  });
+
+  // 預設顯示第一個學期的內容
+  const defaultSemester = Object.keys(data)[0];
+  showSemester(defaultSemester); // 呼叫函式顯示預設學期內容
+}
+
+/**
+ * 顯示指定學期的內容，並更新按鈕的樣式
+ * @param {string} id - 學期名稱（對應區塊的 id）
+ * @param {HTMLElement} clickedBtn - 被點擊的按鈕（可選）
+ */
+function showSemester(id, clickedBtn) {
+  // 隱藏所有學期的區塊（移除 active 樣式）
+  document.querySelectorAll(".semester-group").forEach((g) => g.classList.remove("active"));
+
+  // 取消所有按鈕的 active 樣式
+  document.querySelectorAll(".tab-button").forEach((b) => b.classList.remove("active"));
+
+  // 顯示指定的學期區塊（加上 active 樣式）
+  const targetGroup = document.getElementById(id);
+  if (targetGroup) {
+    targetGroup.classList.add("active");
+  }
+
+  // 若有傳入被點擊的按鈕，直接加上 active 樣式
+  if (clickedBtn) {
+    clickedBtn.classList.add("active");
+  } else {
+    // 否則根據學期名稱找到對應按鈕並加上 active 樣式
+    const btns = document.querySelectorAll(".tab-button");
+    btns.forEach((b) => {
+      if (b.textContent === id) b.classList.add("active");
+    });
+  }
+}
+
+// 初始化頁面，顯示第一個學期的內容
+init();
+
+</script>
+
+<header>學生作品展示</header>
+ <h1>學生學習照片區</h1>
+
+  <!-- 生活照片區 -->
+<div class="life-photos" id="life-photos">
+<img src="images/1132/life/life (1).JPG" alt="生活照片1" loading="lazy" />
+<img src="images/1132/life/life (2).JPG" alt="生活照片2" loading="lazy" />
+<img src="images/1132/life/life (3).JPG" alt="生活照片3" loading="lazy" />
+<img src="images/1132/life/life (4).JPG" alt="生活照片4" loading="lazy" />
+<img src="images/1132/life/life (5).JPG" alt="生活照片5" loading="lazy" />
+<img src="images/1132/life/life (6).JPG" alt="生活照片6" loading="lazy" />
+<img src="images/1132/life/life (7).JPG" alt="生活照片7" loading="lazy" />
+<img src="images/1132/life/life (8).JPG" alt="生活照片8" loading="lazy" />
+<img src="images/1132/life/life (9).JPG" alt="生活照片9" loading="lazy" />
+<img src="images/1132/life/life (10).JPG" alt="生活照片10" loading="lazy" />
+<img src="images/1132/life/life (11).JPG" alt="生活照片11" loading="lazy" />
+<img src="images/1132/life/life (12).JPG" alt="生活照片12" loading="lazy" />
+<img src="images/1132/life/life (13).JPG" alt="生活照片13" loading="lazy" />
+<img src="images/1132/life/life (14).JPG" alt="生活照片14" loading="lazy" />
+<img src="images/1132/life/life (15).JPG" alt="生活照片15" loading="lazy" />
+<img src="images/1132/life/life (16).JPG" alt="生活照片16" loading="lazy" />
+<img src="images/1132/life/life (17).JPG" alt="生活照片17" loading="lazy" />
+<img src="images/1132/life/life (18).JPG" alt="生活照片18" loading="lazy" />
+<img src="images/1132/life/life (19).JPG" alt="生活照片19" loading="lazy" />
+<img src="images/1132/life/life (20).JPG" alt="生活照片20" loading="lazy" />
+<img src="images/1132/life/life (21).JPG" alt="生活照片21" loading="lazy" />
+<img src="images/1132/life/life (22).JPG" alt="生活照片22" loading="lazy" />
+<img src="images/1132/life/life (23).JPG" alt="生活照片23" loading="lazy" />
+<img src="images/1132/life/life (24).JPG" alt="生活照片24" loading="lazy" />
+<img src="images/1132/life/life (25).JPG" alt="生活照片25" loading="lazy" />
+<img src="images/1132/life/life (26).JPG" alt="生活照片26" loading="lazy" />
+<img src="images/1132/life/life (27).JPG" alt="生活照片27" loading="lazy" />
+<img src="images/1132/life/life (28).JPG" alt="生活照片28" loading="lazy" />
+<img src="images/1132/life/life (29).JPG" alt="生活照片29" loading="lazy" />
+<img src="images/1132/life/life (30).JPG" alt="生活照片30" loading="lazy" />
+<img src="images/1132/life/life (31).JPG" alt="生活照片31" loading="lazy" />
+<img src="images/1132/life/life (32).JPG" alt="生活照片32" loading="lazy" />
+<img src="images/1132/life/life (33).JPG" alt="生活照片33" loading="lazy" />
+<img src="images/1132/life/life (34).JPG" alt="生活照片34" loading="lazy" />
+<img src="images/1132/life/life (35).JPG" alt="生活照片35" loading="lazy" />
+<img src="images/1132/life/life (36).JPG" alt="生活照片36" loading="lazy" />
+<img src="images/1132/life/life (37).JPG" alt="生活照片37" loading="lazy" />
+<img src="images/1132/life/life (38).JPG" alt="生活照片38" loading="lazy" />
+<img src="images/1132/life/life (39).JPG" alt="生活照片39" loading="lazy" />
+<img src="images/1132/life/life (40).JPG" alt="生活照片40" loading="lazy" />
+<img src="images/1132/life/life (41).JPG" alt="生活照片41" loading="lazy" />
+<img src="images/1132/life/life (42).JPG" alt="生活照片42" loading="lazy" />
+<img src="images/1132/life/life (43).JPG" alt="生活照片43" loading="lazy" />
+<img src="images/1132/life/life (44).JPG" alt="生活照片44" loading="lazy" />
+<img src="images/1132/life/life (45).JPG" alt="生活照片45" loading="lazy" />
+<img src="images/1132/life/life (46).JPG" alt="生活照片46" loading="lazy" />
+<img src="images/1132/life/life (47).JPG" alt="生活照片47" loading="lazy" />
+<img src="images/1132/life/life (48).JPG" alt="生活照片48" loading="lazy" />
+<img src="images/1132/life/life (49).JPG" alt="生活照片49" loading="lazy" />
+<img src="images/1132/life/life (50).JPG" alt="生活照片50" loading="lazy" />
+<img src="images/1132/life/life (51).JPG" alt="生活照片51" loading="lazy" />
+<img src="images/1132/life/life (52).JPG" alt="生活照片52" loading="lazy" />
+<img src="images/1132/life/life (53).JPG" alt="生活照片53" loading="lazy" />
+<img src="images/1132/life/life (54).JPG" alt="生活照片54" loading="lazy" />
+<img src="images/1132/life/life (55).JPG" alt="生活照片55" loading="lazy" />
+<img src="images/1132/life/life (56).JPG" alt="生活照片56" loading="lazy" />
+<img src="images/1132/life/life (57).JPG" alt="生活照片57" loading="lazy" />
+<img src="images/1132/life/life (58).JPG" alt="生活照片58" loading="lazy" />
+<img src="images/1132/life/life (59).JPG" alt="生活照片59" loading="lazy" />
+<img src="images/1132/life/life (60).JPG" alt="生活照片60" loading="lazy" />
+<img src="images/1132/life/life (61).JPG" alt="生活照片61" loading="lazy" />
+<img src="images/1132/life/life (62).JPG" alt="生活照片62" loading="lazy" />
+<img src="images/1132/life/life (63).JPG" alt="生活照片63" loading="lazy" />
+<img src="images/1132/life/life (64).JPG" alt="生活照片64" loading="lazy" />
+<img src="images/1132/life/life (65).JPG" alt="生活照片65" loading="lazy" />
+<img src="images/1132/life/life (66).JPG" alt="生活照片66" loading="lazy" />
+<img src="images/1132/life/life (67).JPG" alt="生活照片67" loading="lazy" />
+<img src="images/1132/life/life (68).JPG" alt="生活照片68" loading="lazy" />
+    <!-- 可自行增加更多圖片 -->
+  </div>
+
+  <!-- 燈箱 -->
+  <div id="lightbox" title="點擊關閉">
+    <img src="" alt="放大照片" />
+  </div>
+  
+ <h1>113 社團影片 </h1>
+  <!-- 生活影片區 -->
+  <div class="video-section">
+    <h2>生活影片</h2>
+    <iframe src="https://www.youtube.com/embed/YE7VzlLtp-4" title="生活影片1" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" title="生活影片2" allowfullscreen style="margin-top:20px;"></iframe>
+  </div>
+
+  <script>
+    const lifePhotos = document.getElementById("life-photos");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+
+    lifePhotos.addEventListener("click", (e) => {
+      if (e.target.tagName === "IMG") {
+        openLightbox(e.target.src);
+      }
+    });
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add("show");
+      document.body.style.overflow = "hidden"; // 防止背景滾動
+    }
+
+    lightbox.addEventListener("click", () => {
+      lightbox.classList.remove("show");
+      setTimeout(() => {
+        lightboxImg.src = "";
+      }, 500);
+      document.body.style.overflow = ""; // 恢復滾動
+    });
+    
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+/* style.css */
+
+/* 讓所有元素的盒模型包含 padding 和 border，方便計算寬高 */
+* {
+  box-sizing: border-box;
+}
+
+/* 設定整體字體、背景顏色、文字顏色和取消預設外距 */
+body {
+  font-family: "Noto Sans TC", sans-serif; /* 主要字型 */
+  margin: 0; /* 取消外距 */
+  padding: 0; /* 取消內距 */
+  background: #f0f4f8; /* 淺灰藍背景色 */
+  color: #333; /* 文字顏色 */
+}
+
+/* 頁首區塊樣式 */
+header {
+  background: #007acc; /* 藍色背景 */
+  color: white; /* 白色文字 */
+  padding: 1rem; /* 四周內距 */
+  text-align: center; /* 文字置中 */
+  font-weight: 700; /* 粗體 */
+  font-size: 1.6rem; /* 文字大小 */
+}
+
+/* 學期切換按鈕容器，水平排列並可換行 */
+.tabs {
+  display: flex; /* 使用 flex 排版 */
+  flex-wrap: wrap; /* 超出自動換行 */
+  justify-content: center; /* 水平置中 */
+  background: white; /* 白底 */
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1); /* 淡淡陰影 */
+}
+
+/* 學期切換按鈕樣式 */
+.tab-button {
+  background: none; /* 無底色 */
+  border: none; /* 無邊框 */
+  padding: 0.7rem 1.4rem; /* 上下、左右內距 */
+  cursor: pointer; /* 滑鼠變手指 */
+  font-weight: 600; /* 半粗體 */
+  font-size: 1rem; /* 文字大小 */
+  transition: background-color 0.3s ease; /* 背景色過渡效果 */
+  color: #007acc; /* 藍色字 */
+  border-bottom: 3px solid transparent; /* 底線透明，方便切換時變色 */
+}
+
+/* 按鈕滑鼠懸停時背景色變淡藍 */
+.tab-button:hover {
+  background: #e0f0ff;
+}
+
+/* 被選取的按鈕底線變藍，字變粗 */
+.tab-button.active {
+  border-bottom: 3px solid #007acc;
+  font-weight: 700;
+}
+
+/* 學期作品內容的容器 */
+.semester-container {
+  padding: 1rem; /* 內距 */
+  max-width: 1200px; /* 最大寬度 */
+  margin: auto; /* 水平置中 */
+}
+
+/* 單個學期作品區塊，預設隱藏 */
+.semester-group {
+  display: none; /* 預設隱藏 */
+  gap: 1rem; /* 作品卡片間距 */
+  justify-content: center; /* 水平置中 */
+  flex-wrap: wrap; /* 換行 */
+}
+
+/* 活躍學期區塊顯示 */
+.semester-group.active {
+  display: flex; /* 使用 flex 排版顯示 */
+}
+
+/* 學生作品卡片 */
+.student-card {
+  background: white; /* 白底 */
+  border-radius: 8px; /* 圓角 */
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1); /* 淡陰影 */
+  width: 280px; /* 固定寬度 */
+
+  padding: 1rem; /* 內距 */
+  display: flex; /* 使用 flex 排版 */
+  flex-direction: column; /* 直排 */
+  align-items: center; /* 水平置中 */
+}
+
+/* 學生頭像 */
+.avatar {
+  width: 100px; /* 寬度100px */
+  height: 100px; /* 高度100px */
+  border-radius: 50%; /* 圓形 */
+  object-fit: cover; /* 圖片覆蓋區域 */
+  margin-bottom: 0.6rem; /* 底部間距 */
+  border: 2px solid #007acc; /* 藍色邊框 */
+}
+
+/* 學生名字 */
+h3 {
+  margin: 0.2rem 0 0.5rem; /* 上下外距 */
+  color: #007acc; /* 藍色文字 */
+}
+
+/* 學生簡介文字 */
+p {
+  font-size: 0.9rem; /* 字體大小稍小 */
+  text-align: center; /* 置中 */
+  color: #555; /* 深灰色 */
+  margin-bottom: 1rem; /* 底部間距 */
+}
+
+/* 作品區塊（圖片和影片） */
+.work-section {
+  width: 100%; /* 滿寬 */
+}
+
+/* 作品圖片與影片寬度100%，圓角 */
+.work-section img, .work-section video {
+  width: 100%; /* 滿寬 */
+  border-radius: 6px; /* 圓角 */
+  margin-bottom: 0.6rem; /* 下方間距 */
+}
+
+/* 影片移除外框線 */
+.work-section video {
+  outline: none;
+}
+
+/* 手機與平板裝置調整 */
+/* 寬度小於 768px 時啟動 */
+@media (max-width: 768px) {
+  .student-card {
+    width: 90vw; /* 寬度佔視窗90% */
+    max-width: 400px; /* 最大寬度400px */
+  }
+  .tabs {
+    justify-content: flex-start; /* 學期按鈕靠左 */
+    overflow-x: auto; /* 可橫向捲動 */
+    padding: 0 0.5rem; /* 左右內距 */
+  }
+  .tab-button {
+    flex: 0 0 auto; /* 按鈕寬度自動 */
+  }
+}
+
+    /* 生活照片區，多張照片網格式排列 */
+    .life-photos {
+      max-width: 700px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    .life-photos img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .life-photos img:hover {
+      transform: scale(1.05);
+    }
+
+    /* 燈箱 */
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      cursor: pointer;
+    }
+
+    #lightbox.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+      animation: fadeInScale 0.5s ease forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* 生活影片區 */
+    .video-section {
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      text-align: center;
+    }
+
+    .video-section h2 {
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+      margin-bottom: 16px;
+      font-size: 1.5em;
+    }
+
+    .video-section iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 340px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 600px) {
+      .video-section iframe {
+        height: 200px;
+      }
+    }
